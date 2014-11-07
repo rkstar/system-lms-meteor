@@ -6,3 +6,11 @@
 meteor-platform
 autopublish
 insecure
+accounts-password
+audit-argument-checks
+mizzao:bootstrap-3
+ian:accounts-ui-bootstrap-3
+iron:router
+sacha:spin
+underscore
+
