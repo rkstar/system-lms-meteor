@@ -1,0 +1,43 @@
+<template name="user_view">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>{{profile.name}}</h1>
+            </div>
+            <div class="col-md-8">
+                <h1><span class="label label-{{labelClassName}}">{{labelText}}</span></h1>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Name</label><br />
+                {{profile.name}}
+                <br /><br />
+
+                <label>Email</label><br />
+                <a href="mailto:{{primaryEmail}}">{{primaryEmail}}</a>
+                <br /><br />
+
+                <label>Password</label><br />
+                * * * * *
+                <br /><br />
+            </div>
+            <div class="col-md-4">
+                <label>Account Type</label><br />
+                {{labelText}}
+                <br /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-4">
+                <br />
+                <button class="btn btn-warning btn-lg btn-edit"><i class="fa fa-edit"></i> Edit Profile</button>
+                <br /><br />
+            </div>
+        </div>
+    </div>
+</template>

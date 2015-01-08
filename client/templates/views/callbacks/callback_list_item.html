@@ -1,0 +1,17 @@
+<template name="callback_list_item">
+    <tr>
+        {{#if currentUser.profile.isAdmin}}
+            <td>{{salesperson.name}}</td>
+        {{/if}}
+        <td>
+            {{client.name}}
+        </td>
+        <td>
+            {{formatDate callbackDate 'll @ h:mm a'}}
+        </td>
+        <td>{{formatDate callbackDate 'X'}}</td>
+        <td class="center">
+            {{notes}}
+        </td>
+    </tr>
+</template>

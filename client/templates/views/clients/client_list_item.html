@@ -1,0 +1,10 @@
+<template name="client_list_item">
+    <tr id='{{_id}}' class="show-pointer {{className}}">
+        <td>{{name}}</td>
+        <td>{{source}}</td>
+        <td>{{status}}</td>
+        <td>{{formatDate createdAt}}</td>
+        <td class="center">{{formatDate lastContact}}</td>
+        <td class="center">{{salesperson.name}}</td>
+    </tr>
+</template>

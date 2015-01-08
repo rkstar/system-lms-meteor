@@ -1,0 +1,92 @@
+<template name="client_add">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+        <h1>create a client profile</h1>
+        <br /><br />
+
+        <form role="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Salesperson</label><br />
+                    <select class="form-control" name="salesperson" id="salesperson" {{isDisabled}}>
+                        {{#each salesperson}}
+                            <option value="{{_id}}" {{isSelected}}>{{profile.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="status" id="status">
+                        {{#each clientStatusOptions}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="membership">Membership #</label>
+                    <input class="form-control" type="membership" id="membership" name="membership" placeholder="Membership #"/>
+                </div>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name">Full name</label>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Full Name" />
+                    <br />
+                    <label for="address">Street Address</label>
+                    <input class="form-control" type="text" id="address" name="address" placeholder="Street Address"/>
+                    <br />
+                    <label for="city">City</label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="City/Town"/>
+                    <br />
+                    <label for="province">Province</label>
+                    <input class="form-control" type="text" id="province" name="province" value="ON" placeholder="Province"/>
+                    <br />
+                    <label for="postalcode">Postal Code</label>
+                    <input class="form-control" type="text" id="postalcode" name="postalcode" placeholder="Postal Code"/>
+                    <br />
+
+                </div>
+                <div class="col-md-4">
+                    <label for="email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email address" />
+                    <br />
+                    <label for="phone">Phone Number</label>
+                    <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number"/>
+                    <br />
+
+                </div>
+                <div class="col-md-4">
+                    <label for="source">Source</label>
+                    <select class="form-control" id="source" name="source">
+                        {{#each clientSourceOptions}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                    <br />
+                    <label for="dispo">Dispo</label>
+                    <input class="form-control" type="text" id="dispo" name="dispo" placeholder="Dispo"/>
+                    <br />
+                    <label for="offer">Offer</label>
+                    <input class="form-control" type="text" id="offer" name="offer" placeholder="Offer"/>
+                    <br />
+                    <label for="term">Term</label>
+                    <select class="form-control" name="term" id="term">
+                        {{#each clientTermOptions}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div style="text-align:center;">
+                    <br />
+                    <button class="btn btn-primary btn-lg btn-save"><i class="fa fa-save"></i> Save Profile</button>
+                    <br /><br />
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

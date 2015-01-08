@@ -1,0 +1,40 @@
+<template name="callbacks_panel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-phone fa-fw"></i> Callbacks coming up...
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <form id="quickadd_callback" role="form">
+                <div class="list-group input-group">
+                    <span class="input-group-btn callback-datepicker datepicker">
+                        <button type="button" class="btn btn-default btn-calendar"><i class="fa fa-calendar"></i></button>
+                        <input class="datepickerinput" type="hidden" />
+                    </span>
+                    {{> inputAutocomplete settings=autocompleteSettings id="client_name" name="client_name" class="form-control half-width" placeholder="client name"}}
+                    <input class="form-control half-width" type="text" id="notes" name="notes" placeholder="notes..." />
+                    <span class="input-group-btn"><button class="btn btn-default btn-save" type="submit"><i class="fa fa-save"></i></button></span>
+                </div>
+            </form>
+            <div class="list-group">
+                {{#each callbacks}}
+                    <a class="list-group-item" href="/clients/view/{{client._id}}">
+                        <strong>{{client.name}}</strong>
+                        <span class="pull-right text-muted small">
+                            <p class="text-right">{{formatDate callbackDate 'll @ h:mm a'}}
+                            {{#if notme this}}
+                                <br/><em>rep: {{salesperson.name}}</em>
+                            {{/if}}
+                            </p>
+                        </span><br />
+                        {{notes}}
+                    </a>
+                {{/each}}
+            </div>
+            <!-- /.list-group -->
+            <a href="/callbacks" class="btn btn-default btn-block">View All Callbacks</a>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</template>

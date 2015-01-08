@@ -1,0 +1,1 @@
+Callbacks = new Mongo.Collection('callbacks')

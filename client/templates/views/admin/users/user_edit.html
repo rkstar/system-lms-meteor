@@ -1,0 +1,56 @@
+<template name="user_edit">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>{{profile.name}}</h1>
+            </div>
+            <div class="col-md-8">
+                <h1><span class="label label-danger">editing...</span></h1>
+            </div>
+        </div>
+        <hr />
+
+        <form role="form">
+        <div class="row">
+                <div class="col-md-4">
+                    <label for="name">Name</label><br />
+                    <input class="form-control" type="text" id="name" name="name" placeholder="full name" value="{{profile.name}}"/>
+                    <br /><br />
+
+                    <label for="email">Email</label><br />
+                    <input class="form-control" type="text" id="email" name="email" placeholder="email address" value="{{primaryEmail}}"/>
+                    <br /><br />
+
+                    <label for="password">Password</label><br />
+                    <input class="form-control" type="password" id="password" name="password" placeholder="password" />
+                    <small>* Only required if you wish to change your password.</small>
+                    <br /><br />
+
+                    <label for="confirm_password">Confirm Password</label><br />
+                    <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"/>
+                    <small>* Only required if you wish to change your password.</small>
+                    <br /><br />
+
+                </div>
+                <div class="col-md-4">
+                    <label form="account_type">Account Type</label><br />
+                    <select class="form-control" name="account_type" id="account_type" {{isDisabled}}>
+                        {{#each userAccountTypeOptions profile.isAdmin}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                    <br /><br />
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-4">
+                <br />
+                <button class="btn btn-primary btn-lg btn-save" type="submit"><i class="fa fa-save"></i> Save Changes</button>
+                <br /><br />
+            </div>
+        </div>
+        </form>
+    </div>
+</template>

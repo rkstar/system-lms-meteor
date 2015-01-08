@@ -1,0 +1,26 @@
+<template name="dashboard">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+
+    {{> stats_boxes}}
+
+    <div class="row">
+        <!-- LEFT SIDE -->
+        <div class="col-lg-6">
+            {{> callbacks_panel}}
+        </div>
+        <!-- /.col-lg-8 -->
+        <!-- / LEFT SIDE -->
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-6">
+            {{> appointments_panel}}
+        </div>
+        <!-- /.col-lg-4 -->
+        <!-- / RIGHT SIDE -->
+
+    </div>
+    <!-- /.row -->
+    </div>
+</template>

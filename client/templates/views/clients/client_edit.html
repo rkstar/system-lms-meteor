@@ -1,0 +1,97 @@
+<template name="client_edit">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+        <div class="row row-warning">
+            <div class="col-md-12">
+                <h1><span class="label label-warning label-lg" style="vertical-align:top;">editing...</span> &nbsp; {{name}}</h1>
+            </div>
+        </div>
+        <br /><br />
+
+        <form role="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Salesperson</label><br />
+                    <select class="form-control" name="salesperson" id="salesperson" {{isDisabled}}>
+                        {{#each salesperson}}
+                            <option value="{{_id}}" {{isSelected}}>{{profile.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="status" id="status">
+                        {{#each clientStatusOptions status}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="membership">Membership #</label>
+                    <input class="form-control" type="membership" id="membership" name="membership" placeholder="Membership #" value="{{membership}}"/>
+                </div>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name">Full name</label>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Full Name" value="{{name}}"/>
+                    <br />
+                    <label for="address">Street Address</label>
+                    <input class="form-control" type="text" id="address" name="address" placeholder="Street Address" value="{{address}}"/>
+                    <br />
+                    <label for="city">City</label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="City/Town" value="{{city}}"/>
+                    <br />
+                    <label for="province">Province</label>
+                    <input class="form-control" type="text" id="province" name="province" placeholder="Province" value="{{province}}"/>
+                    <br />
+                    <label for="postalcode">Postal Code</label>
+                    <input class="form-control" type="text" id="postalcode" name="postalcode" placeholder="Postal Code" value="{{postalcode}}"/>
+                    <br />
+
+                </div>
+                <div class="col-md-4">
+                    <label for="email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email address" value="{{email}}"/>
+                    <br />
+                    <label for="phone">Phone Number</label>
+                    <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" value="{{phone}}"/>
+                    <br />
+
+                </div>
+                <div class="col-md-4">
+                    <label for="source">Source</label>
+                    <select class="form-control" id="source" name="source">
+                        {{#each clientSourceOptions source}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                    <br />
+                    <label for="dispo">Dispo</label>
+                    <input class="form-control" type="text" id="dispo" name="dispo" placeholder="Dispo" value="{{dispo}}"/>
+                    <br />
+                    <label for="offer">Offer</label>
+                    <input class="form-control" type="text" id="offer" name="offer" placeholder="Offer" value="{{offer}}"/>
+                    <br />
+                    <label for="term">Term</label>
+                    <select class="form-control" name="term" id="term">
+                        {{#each clientTermOptions term}}
+                            <option value="{{value}}" {{isSelected}}>{{display}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="btn-group btn-group-lg" role="group">
+                        <button type="button" class="btn btn-default btn-cancel"><i class="fa fa-backward"></i> Cancel</button>
+                        <button type="button" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

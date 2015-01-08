@@ -1,0 +1,184 @@
+<template name="client_view">
+    {{> navmenu}}
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="/clients">&lt; Clients List</a></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row row-{{statusClassName}}">
+            <div class="col-md-8">
+                <h1><span class="label label-{{labelClassName}}" style="vertical-align:top;">{{status}}</span> &nbsp; {{name}}</h1>
+            </div>
+            <div class="col-md-4 text-right">
+                <h1>member #: {{membership}}</h1>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12">
+                <label>Salesperson</label><br />
+                {{salesperson.name}}
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="address">Street Address</label><br />
+                {{address}}
+                <br /><br />
+
+                <label for="city">City</label><br />
+                {{city}}
+                <br /><br />
+
+                <label for="province">Province</label><br />
+                {{province}}
+                <br /><br />
+
+                <label for="postalcode">Postal Code</label><br />
+                {{postalcode}}
+                <br /><br />
+            </div>
+            <div class="col-md-4">
+                <label for="email">Email address</label><br />
+                <a href='mailto:{{email}}'>{{email}}</a>
+                <br /><br />
+
+                <label for="phone">Phone Number</label><br />
+                <a href='tel:{{phone}}'>{{phone}}</a>
+                <br /><br />
+            </div>
+            <div class="col-md-4">
+                <label for="source">Source</label><br />
+                {{readableSource}}
+                <br /><br />
+
+                <label for="dispo">Dispo</label><br />
+                {{dispo}}
+                <br /><br />
+
+                <label for="offer">Offer</label><br />
+                {{offer}}
+                <br /><br />
+
+                <label for="term">Term</label><br />
+                {{term}}
+                <br /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-warning btn-lg btn-edit"><i class="fa fa-edit"></i> Edit Profile</button>
+                <br/><br/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-phone fa-fw"></i> Callbacks
+                    </div>
+                    <div class="panel-body">
+                        <form id="quickadd_callback" role="form">
+                            <div class="list-group input-group">
+                        <span class="input-group-btn callback-datepicker datepicker">
+                            <button type="button" class="btn btn-default btn-calendar"><i class="fa fa-calendar"></i></button>
+                            <input class="datepickerinput" type="hidden" />
+                        </span>
+                                <input class="form-control" type="text" id="notes" name="notes" placeholder="callback notes..." />
+                                <span class="input-group-btn"><button class="btn btn-default btn-save" type="submit"><i class="fa fa-save"></i></button></span>
+                            </div>
+                        </form>
+                        <div class="list-group">
+                            {{#each callbacks}}
+                                <a class="list-group-item" href="#">
+                                    <p class="light-grey muted small">
+                                        [rep: {{salespseron.name}} | {{formatDate callbackDate 'll @ h:mm a'}}]
+                                    </p>
+                                    <p>
+                                        {{notes}}
+                                    </p>
+                                </a>
+                            {{/each}}
+                        </div>
+                        <!-- /.list-group -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-clock-o fa-fw"></i> Appointments
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <form id="quickadd_appointment" role="form">
+                            <div class="list-group input-group">
+                    <span class="input-group-btn appointment-datepicker datepicker">
+                        <button type="button" class="btn btn-default btn-calendar"><i class="fa fa-calendar"></i></button>
+                        <input class="datepickerinput" type="hidden" />
+                    </span>
+                                <input class="form-control" type="text" id="notes" name="notes" placeholder="appointment notes.." />
+                                <span class="input-group-btn"><button class="btn btn-default btn-save" type="submit"><i class="fa fa-save"></i></button></span>
+                            </div>
+                        </form>
+                        <div class="list-group">
+                            {{#each appointments}}
+                                <a class="list-group-item" href="#">
+                                    <p class="light-grey muted small">
+                                        [rep: {{salespseron.name}} | {{formatDate appointmentDate 'll @ h:mm a'}}]
+                                    </p>
+                                    <p>
+                                        {{notes}}
+                                    </p>
+                                </a>
+                            {{/each}}
+                        </div>
+                        <!-- /.list-group -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-pencil fa-fw"></i> Contact Notes
+                    </div>
+                    <div class="panel-body">
+                        <form id="quickadd_contactnote" role="form">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="notes" id="notes" placeholder="contact note..." />
+                                <span class="input-group-btn"><button class="btn btn-default btn-save" type="submit"><i class="fa fa-save"></i></button></span>
+                            </div>
+                        </form>
+                        <br /><br />
+
+                        <ul class="list-group">
+                            {{invertContactLog}}
+                            {{#each contacted}}
+                                <li class="list-group-item">
+                                    <p class="light-grey muted small">
+                                        [{{formatDate _d 'MMM D/YY h:mm a'}}]
+                                    </p>
+                                    <p>
+                                        {{notes}}
+                                    </p>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

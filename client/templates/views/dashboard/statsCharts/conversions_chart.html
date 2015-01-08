@@ -1,0 +1,31 @@
+<template name="conversions_chart">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-bar-chart-o fa-fw"></i> Conversions
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button id="current_period_display" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        {{chartDataPeriodDisplay}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li><a class='timeperiod-change' href="#">Last 7 Days</a>
+                        </li>
+                        <li><a class='timeperiod-change' href="#">Last 14 Days</a>
+                        </li>
+                        <li><a class='timeperiod-change' href="#">Last 30 Days</a>
+                        </li>
+                        <li><a class='timeperiod-change' href="#">Last 90 Days</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div id="morris-area-chart"></div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</template>
